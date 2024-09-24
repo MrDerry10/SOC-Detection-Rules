@@ -6,7 +6,7 @@ This repository contains a collection of custom detection rules and use cases de
 
 1. **Brute-Force Login Detection**  
    Detect multiple failed login attempts followed by a successful login, indicating a potential brute-force attack.  
-   [View Details](BruteForceLoginDetection/use_case_description.md)
+   [View Details](BruteForceLoginDetection)
 
 2. **Privilege Escalation Detection**  
    Detect unauthorized privilege escalations by monitoring changes to user group memberships.  
