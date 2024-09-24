@@ -1,0 +1,14 @@
+# Brute-Force Login Detection
+
+### Use Case Overview
+This rule detects brute-force login attempts by monitoring multiple failed login attempts (Event ID 4625) followed by a successful login (Event ID 4624) from the same source within a 5-minute window.
+
+### Query
+The following Splunk query captures the failed and successful login events:
+
+```splunk
+(source="WinEventLog:Security" EventCode=4625) 
+| stats count by src_ip, user 
+| where count > 5 
+| append [search (source="WinEventLog:Security" EventCode=4624) | stats count by src_ip, user] 
+| where src_ip = src_ip AND user = user
