@@ -4,27 +4,16 @@ This repository contains a collection of custom detection rules and use cases de
 
 ## List of Use Cases
 
-# Brute-Force Login Detection
+1. **Brute-Force Login Detection**  
+   Detect multiple failed login attempts followed by a successful login, indicating a potential brute-force attack.  
+   [View Details](BruteForceLoginDetection/use_case_description.md)
 
-### Use Case Overview
-This rule detects brute-force login attempts by monitoring multiple failed login attempts (Event ID 4625) followed by a successful login (Event ID 4624) from the same source within a 5-minute window.
-
-### Query
-The following Splunk query captures the failed and successful login events:
-
-```splunk
-(source="WinEventLog:Security" EventCode=4625) 
-| stats count by src_ip, user 
-| where count > 5 
-| append [search (source="WinEventLog:Security" EventCode=4624) | stats count by src_ip, user] 
-| where src_ip = src_ip AND user = user
-```
-
-
-3. **Privilege Escalation Detection**  
+2. **Privilege Escalation Detection**  
    Detect unauthorized privilege escalations by monitoring changes to user group memberships.  
    [View Details](PrivilegeEscalationDetection/use_case_description.md)
 
-4. **Unusual Network Traffic - Data Exfiltration**  
+3. **Unusual Network Traffic - Data Exfiltration**  
    Identify potential data exfiltration by analyzing outbound traffic patterns to suspicious external IPs.  
    [View Details](UnusualNetworkTraffic/use_case_description.md)
+
+  
