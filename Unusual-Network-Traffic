@@ -1,0 +1,11 @@
+# Privileged Escalation Detection
+
+### Use Case Overview
+This rule detects unauthorized privilege escalation by monitoring changes to user group memberships, specifically when a user is added to an administrative group such as "Domain Admins" or "Administrators" (Event ID 4732). Unauthorized privilege escalation can be an indicator of a compromised account or insider threat activity.
+
+### Query
+The following Splunk query captures events where a user is added to a privileged group:
+
+```splunk
+(source="WinEventLog:Security" EventCode=4732) 
+| search "TargetGroupName=Administrators" OR "TargetGroupName=Domain Admins"
