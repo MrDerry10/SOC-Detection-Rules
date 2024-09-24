@@ -10,7 +10,7 @@ This repository contains a collection of custom detection rules and use cases de
 
 2. **Privilege Escalation Detection**  
    Detect unauthorized privilege escalations by monitoring changes to user group memberships.  
-   [View Details](PrivilegeEscalationDetection/use_case_description.md)
+   [View Details](Privilege-Escalation-Detection)
 
 3. **Unusual Network Traffic - Data Exfiltration**  
    Identify potential data exfiltration by analyzing outbound traffic patterns to suspicious external IPs.  
