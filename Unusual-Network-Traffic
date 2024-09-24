@@ -9,3 +9,21 @@ The following Splunk query captures events where a user is added to a privileged
 ```splunk
 (source="WinEventLog:Security" EventCode=4732) 
 | search "TargetGroupName=Administrators" OR "TargetGroupName=Domain Admins"
+```
+
+# How It Works
+This query gathers logs from network security devices (firewalls, proxies) or Windows event logs and aggregates the total amount of data sent (bytes_sent) from internal IP addresses to external destinations. It then checks if the data volume exceeds a predefined threshold (e.g., 1MB) and whether the destination IP is known to be suspicious or abnormal. This helps detect possible data exfiltration attempts to malicious actors or untrusted locations.
+
+# Response Actions
+- Verify if the destination IP is legitimate and authorized for data transfer.
+- Investigate the source IP for signs of compromise or unauthorized data access.
+- Isolate the endpoint if the traffic is deemed suspicious.
+- Block or throttle further data transfers to the destination IP.
+- Trigger alerts or an automated SOAR workflow to respond to the potential exfiltration.
+
+
+### Key Highlights:
+- **Threshold**: You can adjust the `total_bytes` threshold based on what is considered unusually large data transfer in your environment.
+- **Suspicious IP List**: Maintain a list of known malicious IPs or unapproved external destinations to monitor effectively.
+
+This use case demonstrates the detection logic for unusual network activity and potential data exfiltration, giving a clear understanding of how to capture outbound traffic for further analysis and response.
