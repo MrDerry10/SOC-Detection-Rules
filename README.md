@@ -14,6 +14,6 @@ This repository contains a collection of custom detection rules and use cases de
 
 3. **Unusual Network Traffic - Data Exfiltration**  
    Identify potential data exfiltration by analyzing outbound traffic patterns to suspicious external IPs.  
-   [View Details](UnusualNetworkTraffic/use_case_description.md)
+   [View Details](Unusual-Network-Traffic)
 
   
